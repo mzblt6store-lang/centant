@@ -1,0 +1,6 @@
+{
+  "name": "CentAnt: Control de Gastos Hormiga",
+  "description": "Un espacio profesional de finanzas personales diseñado para catalogar, analizar y extinguir fugas silenciosas (gastos hormiga). Permite adaptar la moneda de preferencia según el país de registro del teléfono.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
