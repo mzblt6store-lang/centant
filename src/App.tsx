@@ -933,77 +933,12 @@ export default function App() {
               <div className="p-5 rounded-xl bg-[#282623] border border-[#3A3834] flex flex-col sm:flex-row items-center gap-5">
                 <div className="w-full sm:w-72 h-24 bg-[#1E1D1A] rounded-xl border border-[#3A3834]/60 flex-shrink-0 relative overflow-hidden flex items-center justify-center shadow-inner group">
                   {/* Estilos CSS Inline autopropagados para la simulación animada de hormigas */}
-                  <style>{`
-                    @keyframes ant-march-right-1 {
-                      0% { transform: translate(-30px, 45px); opacity: 0; }
-                      5% { opacity: 1; }
-                      40% { transform: translate(185px, 45px); opacity: 1; }
-                      44% { transform: translate(195px, 35px); opacity: 1; }
-                      48% { transform: translate(195px, 35px); opacity: 0; }
-                      100% { transform: translate(195px, 35px); opacity: 0; }
-                    }
-                    @keyframes coin-march-right-1 {
-                      0% { transform: translate(-30px, 26px) scale(1); opacity: 0; }
-                      5% { opacity: 1; }
-                      40% { transform: translate(185px, 26px) scale(1); opacity: 1; }
-                      44% { transform: translate(202px, 12px) scale(0.8); opacity: 1; }
-                      46% { transform: translate(208px, 18px) scale(0); opacity: 0; }
-                      100% { transform: translate(208px, 18px) scale(0); opacity: 0; }
-                    }
-                    @keyframes ant-march-right-2 {
-                      0% { transform: translate(-30px, 48px); opacity: 0; }
-                      5% { opacity: 1; }
-                      42% { transform: translate(182px, 48px); opacity: 1; }
-                      45% { transform: translate(192px, 40px); opacity: 1; }
-                      49% { transform: translate(192px, 40px); opacity: 0; }
-                      100% { transform: translate(192px, 40px); opacity: 0; }
-                    }
-                    @keyframes coin-march-right-2 {
-                      0% { transform: translate(-30px, 33px) scale(0.8); opacity: 0; }
-                      5% { opacity: 1; }
-                      42% { transform: translate(182px, 33px) scale(0.8); opacity: 1; }
-                      45% { transform: translate(198px, 16px) scale(0.6); opacity: 1; }
-                      47% { transform: translate(204px, 22px) scale(0); opacity: 0; }
-                      100% { transform: translate(204px, 22px) scale(0); opacity: 0; }
-                    }
-                    @keyframes ant-return-left {
-                      0% { transform: translate(205px, 50px) scaleX(-1); opacity: 0; }
-                      10% { opacity: 1; }
-                      90% { opacity: 1; }
-                      100% { transform: translate(-30px, 50px) scaleX(-1); opacity: 0; }
-                    }
-                    @keyframes jar-shake {
-                      0%, 43%, 47%, 100% { transform: scale(1); }
-                      45% { transform: scale(1.08) rotate(3deg); filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.7)); }
-                    }
-                    @keyframes spark-float-1 {
-                      0% { transform: translate(202px, 12px) scale(0); opacity: 0; }
-                      50% { transform: translate(208px, -4px) scale(1.2); opacity: 1; }
-                      100% { transform: translate(212px, -18px) scale(0); opacity: 0; }
-                    }
-                    @keyframes spark-float-2 {
-                      0% { transform: translate(198px, 16px) scale(0); opacity: 0; }
-                      50% { transform: translate(204px, 0px) scale(1.1); opacity: 1; }
-                      100% { transform: translate(208px, -12px) scale(0); opacity: 0; }
-                    }
-                    @keyframes leg-wiggle-odd {
-                      0%, 100% { transform: rotate(0deg); }
-                      50% { transform: rotate(18deg); }
-                    }
-                    @keyframes leg-wiggle-even {
-                      0%, 100% { transform: rotate(0deg); }
-                      50% { transform: rotate(-18deg); }
-                    }
-                    .ant-leg-1 { animation: leg-wiggle-odd 0.12s infinite ease-in-out; transform-origin: 0px 0px; }
-                    .ant-leg-2 { animation: leg-wiggle-even 0.12s infinite ease-in-out; transform-origin: 0px 0px; }
-                  `}</style>
-
                   <svg viewBox="0 0 250 80" className="w-full h-full" fill="none">
                     {/* Línea de tierra punteada / Ant Trail */}
                     <line x1="0" y1="56" x2="250" y2="56" stroke="#44423C" strokeWidth="1.5" strokeDasharray="4,4" />
                     
                     {/* Frasco de ahorros / Jar of savings en la derecha */}
-                    <g transform="translate(195, 12)" style={{ animation: 'jar-shake 8s infinite ease-in-out' }}>
+                    <g transform="translate(195, 12)" className="animate-jar-shake">
                       {/* Glow background */}
                       <circle cx="15" cy="20" r="16" fill="rgba(245, 158, 11, 0.1)" className="blur-xs" />
                       
@@ -1026,15 +961,15 @@ export default function App() {
                     </g>
 
                     {/* Chispas de ahorro animadas */}
-                    <g style={{ animation: 'spark-float-1 8s infinite ease-in-out' }}>
+                    <g className="animate-spark-1">
                       <path d="M0 0 L2 -2 L4 0 L2 2 Z" fill="#FBBF24" />
                     </g>
-                    <g style={{ animation: 'spark-float-2 8s infinite ease-in-out', animationDelay: '4s' }}>
+                    <g className="animate-spark-2">
                       <circle cx="0" cy="0" r="1.5" fill="#F59E0B" />
                     </g>
 
                     {/* Ant 1 (Marchando a la derecha con moneda gigante) */}
-                    <g style={{ animation: 'ant-march-right-1 8s infinite linear' }}>
+                    <g className="animate-ant-march-1">
                       <g transform="scale(1.15)">
                         {/* Reusable Ant body */}
                         <g stroke="#F59E0B" strokeWidth="0.8" strokeLinecap="round">
@@ -1057,14 +992,14 @@ export default function App() {
                     </g>
 
                     {/* Moneda 1 transportada */}
-                    <g style={{ animation: 'coin-march-right-1 8s infinite linear' }}>
+                    <g className="animate-coin-march-1">
                       <circle cx="0" cy="0" r="7.5" fill="#FBBF24" stroke="#D97706" strokeWidth="1.2" style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.4))' }} />
                       <circle cx="0" cy="0" r="5.5" fill="#F59E0B" stroke="#D97706" strokeWidth="0.5" />
                       <text x="0" y="2.5" fontSize="8.5" fontWeight="900" fill="#FFF" textAnchor="middle" fontFamily="monospace">$</text>
                     </g>
 
                     {/* Ant 2 (Marchando a la derecha con moneda mediana, delayed) */}
-                    <g style={{ animation: 'ant-march-right-2 8s infinite linear', animationDelay: '4s' }}>
+                    <g className="animate-ant-march-2">
                       <g transform="scale(0.95)">
                         <g stroke="#F59E0B" strokeWidth="0.8" strokeLinecap="round">
                           <path d="M0 -1 L-2 -4" className="ant-leg-1" />
@@ -1085,14 +1020,14 @@ export default function App() {
                     </g>
 
                     {/* Moneda 2 transportada */}
-                    <g style={{ animation: 'coin-march-right-2 8s infinite linear', animationDelay: '4s' }}>
+                    <g className="animate-coin-march-2">
                       <circle cx="0" cy="0" r="5.5" fill="#FBBF24" stroke="#D97706" strokeWidth="1" style={{ filter: 'drop-shadow(0 1px 1.5px rgba(0,0,0,0.4))' }} />
                       <circle cx="0" cy="0" r="4" fill="#F59E0B" stroke="#D97706" strokeWidth="0.5" />
                       <text x="0" y="2" fontSize="6.5" fontWeight="900" fill="#FFF" textAnchor="middle" fontFamily="monospace">$</text>
                     </g>
 
                     {/* Ant 3 (Regresando feliz y vacía, crossing paths) */}
-                    <g style={{ animation: 'ant-return-left 8s infinite linear', animationDelay: '1.5s' }}>
+                    <g className="animate-ant-return">
                       <g transform="scale(1.05)">
                         <g stroke="#F59E0B" strokeWidth="0.8" strokeLinecap="round">
                           <path d="M0 -1 L-2 -4" className="ant-leg-1" />
